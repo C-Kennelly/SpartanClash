@@ -1,0 +1,363 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="test_clashofcompaniesdbModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="mv_Blue_Results">
+          <Key>
+            <PropertyRef Name="Company" />
+          </Key>
+          <Property Name="Company" Type="text" Nullable="false" />
+          <Property Name="Blue_Wins" Type="text" />
+          <Property Name="Blue_Losses" Type="text" />
+          <Property Name="Win_Percent" Type="text" />
+        </EntityType>
+        <EntityType Name="mv_Red_Results">
+          <Key>
+            <PropertyRef Name="Company" />
+          </Key>
+          <Property Name="Company" Type="text" Nullable="false" />
+          <Property Name="Red_Wins" Type="text" />
+          <Property Name="Red_Losses" Type="text" />
+          <Property Name="Win_Percent" Type="text" />
+        </EntityType>
+        <EntityType Name="t_clanbattleparticipants">
+          <Key>
+            <PropertyRef Name="MatchId" />
+          </Key>
+          <Property Name="MatchId" Type="text" Nullable="false" />
+          <Property Name="Team1_Rank" Type="int" />
+          <Property Name="Team2_Rank" Type="int" />
+          <Property Name="Team1_Score" Type="uint" />
+          <Property Name="Team2_Score" Type="uint" />
+          <Property Name="Team1_Company1" Type="text" />
+          <Property Name="Team1_Company2" Type="text" />
+          <Property Name="Team2_Company1" Type="text" />
+          <Property Name="Team2_Company2" Type="text" />
+          <Property Name="Team1_Player_1" Type="tinytext" />
+          <Property Name="Team1_Player_2" Type="tinytext" />
+          <Property Name="Team1_Player_3" Type="tinytext" />
+          <Property Name="Team1_Player_4" Type="tinytext" />
+          <Property Name="Team1_Player_5" Type="tinytext" />
+          <Property Name="Team1_Player_6" Type="tinytext" />
+          <Property Name="Team1_Player_7" Type="tinytext" />
+          <Property Name="Team1_Player_8" Type="tinytext" />
+          <Property Name="Team1_Player_9" Type="tinytext" />
+          <Property Name="Team1_Player_10" Type="tinytext" />
+          <Property Name="Team1_Player_11" Type="tinytext" />
+          <Property Name="Team1_Player_12" Type="tinytext" />
+          <Property Name="Team2_Player_1" Type="tinytext" />
+          <Property Name="Team2_Player_2" Type="tinytext" />
+          <Property Name="Team2_Player_3" Type="tinytext" />
+          <Property Name="Team2_Player_4" Type="tinytext" />
+          <Property Name="Team2_Player_5" Type="tinytext" />
+          <Property Name="Team2_Player_6" Type="tinytext" />
+          <Property Name="Team2_Player_7" Type="tinytext" />
+          <Property Name="Team2_Player_8" Type="tinytext" />
+          <Property Name="Team2_Player_9" Type="tinytext" />
+          <Property Name="Team2_Player_10" Type="tinytext" />
+          <Property Name="Team2_Player_11" Type="tinytext" />
+          <Property Name="Team2_Player_12" Type="tinytext" />
+        </EntityType>
+        <EntityType Name="t_clanbattles">
+          <Key>
+            <PropertyRef Name="MatchId" />
+          </Key>
+          <Property Name="MatchId" Type="text" Nullable="false" />
+          <Property Name="GameMode" Type="int" />
+          <Property Name="HopperId" Type="text" />
+          <Property Name="MapId" Type="text" />
+          <Property Name="MapVariant_ResourceType" Type="int" />
+          <Property Name="MapVariant_ResourceId" Type="text" />
+          <Property Name="MapVariant_OwnerType" Type="int" />
+          <Property Name="MapVariant_Owner" Type="text" />
+          <Property Name="GameBaseVariantID" Type="text" />
+          <Property Name="GameVariant_ResourceID" Type="text" />
+          <Property Name="GameVariant_ResourceType" Type="int" />
+          <Property Name="GameVariant_OwnerType" Type="int" />
+          <Property Name="GameVariant_Owner" Type="text" />
+          <Property Name="MatchCompleteDate" Type="datetime" Precision="0" />
+          <Property Name="MatchDuration" Type="text" />
+          <Property Name="IsTeamGame" Type="binary" MaxLength="50" />
+          <Property Name="SeasonID" Type="text" />
+          <Property Name="Team1_Company 1" Type="text" />
+          <Property Name="Team1_Company 2" Type="text" />
+          <Property Name="Team2_Company1" Type="text" />
+          <Property Name="Team2_Company2" Type="text" />
+        </EntityType>
+        <EntityType Name="t_results">
+          <Key>
+            <PropertyRef Name="Company" />
+          </Key>
+          <Property Name="Company" Type="text" Nullable="false" />
+          <Property Name="Wins" Type="int" Nullable="false" />
+          <Property Name="Losses" Type="int" Nullable="false" />
+          <Property Name="Win_Percent" Type="double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_spartans">
+          <Key>
+            <PropertyRef Name="gamertag" />
+          </Key>
+          <Property Name="gamertag" Type="text" Nullable="false" />
+          <Property Name="company" Type="text" />
+          <Property Name="rank" Type="text" />
+          <Property Name="date_updated" Type="datetime" Precision="0" />
+        </EntityType>
+        <EntityContainer Name="test_clashofcompaniesdbModelStoreContainer">
+          <EntitySet Name="mv_Blue_Results" EntityType="Self.mv_Blue_Results" Schema="test_clashofcompaniesdb" store:Type="Tables" />
+          <EntitySet Name="mv_Red_Results" EntityType="Self.mv_Red_Results" Schema="test_clashofcompaniesdb" store:Type="Tables" />
+          <EntitySet Name="t_clanbattleparticipants" EntityType="Self.t_clanbattleparticipants" Schema="test_clashofcompaniesdb" store:Type="Tables" />
+          <EntitySet Name="t_clanbattles" EntityType="Self.t_clanbattles" Schema="test_clashofcompaniesdb" store:Type="Tables" />
+          <EntitySet Name="t_results" EntityType="Self.t_results" Schema="test_clashofcompaniesdb" store:Type="Tables" />
+          <EntitySet Name="t_spartans" EntityType="Self.t_spartans" Schema="test_clashofcompaniesdb" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="test_clashofcompaniesdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="mv_Blue_Results">
+          <Key>
+            <PropertyRef Name="Company" />
+          </Key>
+          <Property Name="Company" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Blue_Wins" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="Blue_Losses" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="Win_Percent" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="mv_Red_Results">
+          <Key>
+            <PropertyRef Name="Company" />
+          </Key>
+          <Property Name="Company" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Red_Wins" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="Red_Losses" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="Win_Percent" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="t_clanbattleparticipants">
+          <Key>
+            <PropertyRef Name="MatchId" />
+          </Key>
+          <Property Name="MatchId" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Team1_Rank" Type="Int32" />
+          <Property Name="Team2_Rank" Type="Int32" />
+          <Property Name="Team1_Score" Type="Int64" />
+          <Property Name="Team2_Score" Type="Int64" />
+          <Property Name="Team1_Company1" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="Team1_Company2" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="Team2_Company1" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="Team2_Company2" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="Team1_Player_1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Team1_Player_2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Team1_Player_3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Team1_Player_4" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Team1_Player_5" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Team1_Player_6" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Team1_Player_7" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Team1_Player_8" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Team1_Player_9" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Team1_Player_10" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Team1_Player_11" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Team1_Player_12" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Team2_Player_1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Team2_Player_2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Team2_Player_3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Team2_Player_4" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Team2_Player_5" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Team2_Player_6" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Team2_Player_7" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Team2_Player_8" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Team2_Player_9" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Team2_Player_10" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Team2_Player_11" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Team2_Player_12" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="t_results">
+          <Key>
+            <PropertyRef Name="Company" />
+          </Key>
+          <Property Name="Company" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Wins" Type="Int32" Nullable="false" />
+          <Property Name="Losses" Type="Int32" Nullable="false" />
+          <Property Name="Win_Percent" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_spartans">
+          <Key>
+            <PropertyRef Name="gamertag" />
+          </Key>
+          <Property Name="gamertag" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="company" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="rank" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="date_updated" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="t_clanbattles">
+          <Key>
+            <PropertyRef Name="MatchId" />
+          </Key>
+          <Property Name="MatchId" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GameMode" Type="Int32" />
+          <Property Name="HopperId" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="MapId" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="MapVariant_ResourceType" Type="Int32" />
+          <Property Name="MapVariant_ResourceId" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="MapVariant_OwnerType" Type="Int32" />
+          <Property Name="MapVariant_Owner" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="GameBaseVariantID" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="GameVariant_ResourceID" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="GameVariant_ResourceType" Type="Int32" />
+          <Property Name="GameVariant_OwnerType" Type="Int32" />
+          <Property Name="GameVariant_Owner" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="MatchCompleteDate" Type="DateTime" />
+          <Property Name="MatchDuration" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="IsTeamGame" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="SeasonID" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="Team1_Company_1" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="Team1_Company_2" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="Team2_Company1" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="Team2_Company2" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="test_clashdbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="mv_Blue_Results" EntityType="Self.mv_Blue_Results" />
+          <EntitySet Name="mv_Red_Results" EntityType="Self.mv_Red_Results" />
+          <EntitySet Name="t_clanbattleparticipants" EntityType="Self.t_clanbattleparticipants" />
+          <EntitySet Name="t_results" EntityType="Self.t_results" />
+          <EntitySet Name="t_spartans" EntityType="Self.t_spartans" />
+          <EntitySet Name="t_clanbattles" EntityType="Self.t_clanbattles" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="test_clashofcompaniesdbModelStoreContainer" CdmEntityContainer="test_clashdbEntities">
+          <EntitySetMapping Name="mv_Blue_Results">
+            <EntityTypeMapping TypeName="test_clashofcompaniesdbModel.mv_Blue_Results">
+              <MappingFragment StoreEntitySet="mv_Blue_Results">
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="Blue_Wins" ColumnName="Blue_Wins" />
+                <ScalarProperty Name="Blue_Losses" ColumnName="Blue_Losses" />
+                <ScalarProperty Name="Win_Percent" ColumnName="Win_Percent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mv_Red_Results">
+            <EntityTypeMapping TypeName="test_clashofcompaniesdbModel.mv_Red_Results">
+              <MappingFragment StoreEntitySet="mv_Red_Results">
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="Red_Wins" ColumnName="Red_Wins" />
+                <ScalarProperty Name="Red_Losses" ColumnName="Red_Losses" />
+                <ScalarProperty Name="Win_Percent" ColumnName="Win_Percent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_clanbattleparticipants">
+            <EntityTypeMapping TypeName="test_clashofcompaniesdbModel.t_clanbattleparticipants">
+              <MappingFragment StoreEntitySet="t_clanbattleparticipants">
+                <ScalarProperty Name="MatchId" ColumnName="MatchId" />
+                <ScalarProperty Name="Team1_Rank" ColumnName="Team1_Rank" />
+                <ScalarProperty Name="Team2_Rank" ColumnName="Team2_Rank" />
+                <ScalarProperty Name="Team1_Score" ColumnName="Team1_Score" />
+                <ScalarProperty Name="Team2_Score" ColumnName="Team2_Score" />
+                <ScalarProperty Name="Team1_Company1" ColumnName="Team1_Company1" />
+                <ScalarProperty Name="Team1_Company2" ColumnName="Team1_Company2" />
+                <ScalarProperty Name="Team2_Company1" ColumnName="Team2_Company1" />
+                <ScalarProperty Name="Team2_Company2" ColumnName="Team2_Company2" />
+                <ScalarProperty Name="Team1_Player_1" ColumnName="Team1_Player_1" />
+                <ScalarProperty Name="Team1_Player_2" ColumnName="Team1_Player_2" />
+                <ScalarProperty Name="Team1_Player_3" ColumnName="Team1_Player_3" />
+                <ScalarProperty Name="Team1_Player_4" ColumnName="Team1_Player_4" />
+                <ScalarProperty Name="Team1_Player_5" ColumnName="Team1_Player_5" />
+                <ScalarProperty Name="Team1_Player_6" ColumnName="Team1_Player_6" />
+                <ScalarProperty Name="Team1_Player_7" ColumnName="Team1_Player_7" />
+                <ScalarProperty Name="Team1_Player_8" ColumnName="Team1_Player_8" />
+                <ScalarProperty Name="Team1_Player_9" ColumnName="Team1_Player_9" />
+                <ScalarProperty Name="Team1_Player_10" ColumnName="Team1_Player_10" />
+                <ScalarProperty Name="Team1_Player_11" ColumnName="Team1_Player_11" />
+                <ScalarProperty Name="Team1_Player_12" ColumnName="Team1_Player_12" />
+                <ScalarProperty Name="Team2_Player_1" ColumnName="Team2_Player_1" />
+                <ScalarProperty Name="Team2_Player_2" ColumnName="Team2_Player_2" />
+                <ScalarProperty Name="Team2_Player_3" ColumnName="Team2_Player_3" />
+                <ScalarProperty Name="Team2_Player_4" ColumnName="Team2_Player_4" />
+                <ScalarProperty Name="Team2_Player_5" ColumnName="Team2_Player_5" />
+                <ScalarProperty Name="Team2_Player_6" ColumnName="Team2_Player_6" />
+                <ScalarProperty Name="Team2_Player_7" ColumnName="Team2_Player_7" />
+                <ScalarProperty Name="Team2_Player_8" ColumnName="Team2_Player_8" />
+                <ScalarProperty Name="Team2_Player_9" ColumnName="Team2_Player_9" />
+                <ScalarProperty Name="Team2_Player_10" ColumnName="Team2_Player_10" />
+                <ScalarProperty Name="Team2_Player_11" ColumnName="Team2_Player_11" />
+                <ScalarProperty Name="Team2_Player_12" ColumnName="Team2_Player_12" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_results">
+            <EntityTypeMapping TypeName="test_clashofcompaniesdbModel.t_results">
+              <MappingFragment StoreEntitySet="t_results">
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="Wins" ColumnName="Wins" />
+                <ScalarProperty Name="Losses" ColumnName="Losses" />
+                <ScalarProperty Name="Win_Percent" ColumnName="Win_Percent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_spartans">
+            <EntityTypeMapping TypeName="test_clashofcompaniesdbModel.t_spartans">
+              <MappingFragment StoreEntitySet="t_spartans">
+                <ScalarProperty Name="gamertag" ColumnName="gamertag" />
+                <ScalarProperty Name="company" ColumnName="company" />
+                <ScalarProperty Name="rank" ColumnName="rank" />
+                <ScalarProperty Name="date_updated" ColumnName="date_updated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_clanbattles">
+            <EntityTypeMapping TypeName="test_clashofcompaniesdbModel.t_clanbattles">
+              <MappingFragment StoreEntitySet="t_clanbattles">
+                <ScalarProperty Name="MatchId" ColumnName="MatchId" />
+                <ScalarProperty Name="GameMode" ColumnName="GameMode" />
+                <ScalarProperty Name="HopperId" ColumnName="HopperId" />
+                <ScalarProperty Name="MapId" ColumnName="MapId" />
+                <ScalarProperty Name="MapVariant_ResourceType" ColumnName="MapVariant_ResourceType" />
+                <ScalarProperty Name="MapVariant_ResourceId" ColumnName="MapVariant_ResourceId" />
+                <ScalarProperty Name="MapVariant_OwnerType" ColumnName="MapVariant_OwnerType" />
+                <ScalarProperty Name="MapVariant_Owner" ColumnName="MapVariant_Owner" />
+                <ScalarProperty Name="GameBaseVariantID" ColumnName="GameBaseVariantID" />
+                <ScalarProperty Name="GameVariant_ResourceID" ColumnName="GameVariant_ResourceID" />
+                <ScalarProperty Name="GameVariant_ResourceType" ColumnName="GameVariant_ResourceType" />
+                <ScalarProperty Name="GameVariant_OwnerType" ColumnName="GameVariant_OwnerType" />
+                <ScalarProperty Name="GameVariant_Owner" ColumnName="GameVariant_Owner" />
+                <ScalarProperty Name="MatchCompleteDate" ColumnName="MatchCompleteDate" />
+                <ScalarProperty Name="MatchDuration" ColumnName="MatchDuration" />
+                <ScalarProperty Name="IsTeamGame" ColumnName="IsTeamGame" />
+                <ScalarProperty Name="SeasonID" ColumnName="SeasonID" />
+                <ScalarProperty Name="Team1_Company_1" ColumnName="Team1_Company 1" />
+                <ScalarProperty Name="Team1_Company_2" ColumnName="Team1_Company 2" />
+                <ScalarProperty Name="Team2_Company1" ColumnName="Team2_Company1" />
+                <ScalarProperty Name="Team2_Company2" ColumnName="Team2_Company2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

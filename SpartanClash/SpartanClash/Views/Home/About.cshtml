@@ -1,23 +1,47 @@
 ﻿@{
     ViewBag.Title = "About";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+<div class="jumbotron">
+    <h1>
+        Chase more than Achilles.
+    </h1>
+    <br />
+    <br />
+    <h3>
+        Spartan Clash brings your friends closer by giving you something to strive for.
+    </h3>
+</div>
 
-<br />
-<h3>What does Spartan Clash do?</h3>
-<p>
-    Spartan Clash hosts leaderboards that show which Spartan Companies (player groups in Halo 5) are "the best."  Right now, we only track Warzone wins, but we expect the site to evolve over the next few months.
-    Ultimately, we want you to be able to track your progress and find rivals Companies to challenge.
-</p>
-<br />
-<h3>Why do I care about Spartan Clash?</h3>
-<p>
-    Ever since Halo 2's debut, some sort of clan system has been a big draw for a lot of players.  Playng Halo with friends is simply more fun.  However, a lot of Spartan Companies finish the push for the Achilles armor, look around, and say "what's next?"  Many other companies won't ever get the armor, but are still looking for a common goal to fight for with their friends.
-    Spartan Clash is meant to bring your Company closer by giving you something to strive for.
-</p>
-<br />
-<p>Use this area to provide additional information.</p>
+<div class="question">
+    <h3>
+        <b>What does Spartan Clash do?</b>
+    </h3>
+    <p>
+        Spartan Clash hosts leaderboards that show which Spartan Companies are "the best."  Right now, we only show Warzone wins, but we expect the site to evolve over the next few months.
+        Ultimately, we want you to be able to track your progress and find rivals Companies to challenge.
+    </p>
+</div>
+
+<div class="question">
+    <h3>
+        <b>How do you track matches?</b>
+    </h3>
+    <p>
+        We use the Spartan Company lists published on Waypoint and the Halo 5 API to generate a list of possible matches.  Then we sift through those matches to find "battles," and publish the results here.
+    </p>
+    <br />
+</div>
+
+<div class="question">
+    <h3>
+        <b>What qualifies a match to be counted? </b>
+    </h3>
+    <p>
+        We count any match that has a full fireteam, so 6 more members on 
+    </p>
+    <br />
+</div>
+
 
 <footer>
     <p>&copy; @DateTime.Now.Year - This application is offered by SpartanClash.com, which is solely responsible for its content. It is not sponsored or endorsed by Microsoft. This application uses the Halo® Game Data API. Halo © @DateTime.Now.Year Microsoft Corporation. All rights reserved. Microsoft, Halo, and the Halo Logo are trademarks of the Microsoft group of companies. </p>
