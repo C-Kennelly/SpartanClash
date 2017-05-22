@@ -1,0 +1,23 @@
+﻿@using SpartanClash.ViewModels;
+@model List<ClanBattle>
+
+@{
+
+    ViewBag.Title = "CompanyResults";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+    string companyName = Model.FirstOrDefault().primaryCompany;
+
+}
+
+<h2>Company Results</h2>
+
+<h3>@companyName has @Model.Count matches to explore.</h3>
+
+@foreach(ClanBattle battle in Model)
+{
+    
+    <div class="matchHeader">
+        @battle.allyHeader vs. @battle.enemyHeader
+    </div>
+}

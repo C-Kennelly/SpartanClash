@@ -168,6 +168,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="ViewModels\ClanBattle.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LeaderboardsController.cs" />
     <Compile Include="Controllers\ServiceRecordController.cs" />
@@ -255,6 +256,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Leaderboards\Index.cshtml" />
     <Content Include="Views\ServiceRecord\Index.cshtml" />
+    <Content Include="Views\ServiceRecord\CompanyResults.cshtml" />
+    <Content Include="Views\ServiceRecord\NoCompaniesFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
