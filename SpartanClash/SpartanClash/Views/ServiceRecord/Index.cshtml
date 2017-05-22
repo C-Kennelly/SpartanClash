@@ -1,0 +1,19 @@
+﻿
+
+@{
+    ViewBag.Title = "ServiceRecord";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ServiceRecord</h2>
+
+@foreach(SpartanClash.Models.t_clashdevset match in Model)
+{
+    <div class="company">
+        <span class="comapnyName">@match.MatchCompleteDate</span>
+        <div class="companyDescription">
+            
+        </div>
+    </div>
+}
+

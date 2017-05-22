@@ -9,7 +9,7 @@ namespace SpartanClash.Controllers
     public class LeaderboardsController : Controller
     {
         // GET: Leaderboards
-        public ActionResult Leaderboards()
+        public ActionResult Index()
         {
             return View();
         }
