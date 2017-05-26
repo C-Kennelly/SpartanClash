@@ -1,41 +1,43 @@
-﻿@{
+﻿@model SpartanClash.ViewModels.CompanyRegistry
+@{
     ViewBag.Title = "ServiceRecord";
     Layout = "~/Views/Shared/_Layout.cshtml";
-
-    List<string> demoCompanies = new List<string>(3);
-
-    demoCompanies.Add("Allegiance");
-    demoCompanies.Add("Dominated");
-    demoCompanies.Add("Infamous");
-
 }
 
-<h2>Service Record</h2>
+<h1><u>Service Record</u></h1>
 
-<h3> Choose from one of our demo companies, or search your own.</h3>
-
-<div class="demoCompanies">
-
-    @foreach (string demoCompanyName in demoCompanies)
-    {
-        <span class="demoCompanyLink">@Html.ActionLink(demoCompanyName, "CompanyResults/" + demoCompanyName, "ServiceRecord")</span>
-        <p></p>
-    }
-    
-
-    <div class="searchArea">
-        <div id="adv-search" class="input-group">
-            <input class="form-control" placeholder="Search bar text here" type="text" />
-            <div class="input-group-btn">
-                <div class="btn-group" role="group">
-                    <button class="btn btn-primary" type="button">
-                        <span class="glyphicon glyphicon-search" aria-hidden="true">
-                        </span>
-                    </button>    
-                </div>
+<div class="searchArea">
+    <div id="adv-search" class="input-group">
+        <input class="form-control" placeholder="Search or select a company..." type="text" />
+        <div class="input-group-btn">
+            <div class="btn-group" role="group">
+                <button class="btn btn-primary" type="button">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true">
+                    </span>
+                </button>
             </div>
         </div>
     </div>
+</div>
+<h3> </h3>
+
+
+<div class="allCompanies">
+
+    @foreach (SpartanClash.ViewModels.CompanyRegistryItem item in Model.registryItems)
+    {
+
+        {
+            <div class="leaderboardItem">
+                <span class="companyName">@Html.ActionLink(item.companyName, "CompanyResults/" + item.companyName, "ServiceRecord")</span>
+            </div>
+
+            <p></p>
+        }
+    }
+    
+
+
 
 </div>
 

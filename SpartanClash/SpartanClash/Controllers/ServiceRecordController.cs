@@ -13,10 +13,13 @@ namespace SpartanClash.Controllers
         // GET: ServiceRecord
         public ActionResult Index()
         {
+
+
             using (var db = new clashdbEntities())
             {
-                List<t_clashdevset> allMatches = db.t_clashdevset.OrderBy(x => x.MatchId).ToList();
-                return View(allMatches);
+                CompanyRegistry companyRegistry = new CompanyRegistry();
+
+                return View(companyRegistry);
             }
         }
 
