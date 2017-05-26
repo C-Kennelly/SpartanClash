@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1><u>Warzone Warlords Leaderboards</u></h1>
+<h1><u>Leaderboards</u></h1>
 
 @foreach (SpartanClash.ViewModels.Leaderboardtem item in Model.leaderboardItems)
 {
@@ -14,7 +14,7 @@
             <span class="rank">@item.rank</span>
             <span class="companyName">@Html.ActionLink(item.companyName, "CompanyResults/" + item.companyName, "ServiceRecord")</span>
             <span class="winPercent">@item.winPercent</span>
-            <span class="winsAndLosses">@item.wins wins : @item.losses losses</span>
+            <span class="winsAndLosses">W/L: @item.wins - @item.losses</span>
         </div>
         
         <p></p>

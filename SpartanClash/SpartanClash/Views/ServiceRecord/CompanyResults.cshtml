@@ -7,17 +7,19 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     
     string companyName = Model.FirstOrDefault().primaryCompany;
-
+    int i = 1;
 }
 
 <h1><u>Company Results</u></h1>
 
 <h3>@companyName has @Model.Count matches to explore.</h3>
 
-@foreach(ClanBattle battle in Model)
+@foreach (ClanBattle battle in Model)
 {
-    
+
     <div class="matchHeader">
-        @battle.allyHeader vs. @battle.enemyHeader
+        Match #@i: @battle.allyHeader vs. @battle.enemyHeader
     </div>
+    
+    i++;
 }
