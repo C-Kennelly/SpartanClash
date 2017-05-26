@@ -14,6 +14,12 @@ namespace SpartanClash.Models
     
     public partial class t_clashdevset
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public t_clashdevset()
+        {
+            this.t_companies = new HashSet<t_companies>();
+        }
+    
         public string MatchId { get; set; }
         public Nullable<int> GameMode { get; set; }
         public string HopperId { get; set; }
@@ -31,9 +37,17 @@ namespace SpartanClash.Models
         public string MatchDuration { get; set; }
         public byte[] IsTeamGame { get; set; }
         public string SeasonID { get; set; }
-        public string Team1_Company_1 { get; set; }
-        public string Team1_Company_2 { get; set; }
+        public string Team1_Company1 { get; set; }
+        public string Team1_Company2 { get; set; }
         public string Team2_Company1 { get; set; }
         public string Team2_Company2 { get; set; }
+        public int Team1_Rank { get; set; }
+        public int Team2_Rank { get; set; }
+        public Nullable<long> Team1_Score { get; set; }
+        public Nullable<long> Team2_Score { get; set; }
+        public int Status { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<t_companies> t_companies { get; set; }
     }
 }

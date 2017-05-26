@@ -27,8 +27,8 @@ namespace SpartanClash.Controllers
             {
                 List<t_clashdevset> companyMatches = db.t_clashdevset
                     .Where(
-                        x => x.Team1_Company_1 == company
-                        || x.Team1_Company_2 == company
+                        x => x.Team1_Company1 == company
+                        || x.Team1_Company2 == company
                         || x.Team2_Company1 == company
                         || x.Team2_Company2 == company
                     ).ToList();

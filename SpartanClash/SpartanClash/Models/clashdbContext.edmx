@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="MatchId" />
           </Key>
-          <Property Name="MatchId" Type="tinytext" Nullable="false" />
+          <Property Name="MatchId" Type="varchar" MaxLength="64" Nullable="false" />
           <Property Name="GameMode" Type="int" />
           <Property Name="HopperId" Type="text" />
           <Property Name="MapId" Type="text" />
@@ -26,23 +26,89 @@
           <Property Name="MatchDuration" Type="text" />
           <Property Name="IsTeamGame" Type="binary" MaxLength="50" />
           <Property Name="SeasonID" Type="text" />
-          <Property Name="Team1_Company 1" Type="text" />
-          <Property Name="Team1_Company 2" Type="text" />
+          <Property Name="Team1_Company1" Type="text" />
+          <Property Name="Team1_Company2" Type="text" />
           <Property Name="Team2_Company1" Type="text" />
           <Property Name="Team2_Company2" Type="text" />
+          <Property Name="Team1_Rank" Type="int" Nullable="false" />
+          <Property Name="Team2_Rank" Type="int" Nullable="false" />
+          <Property Name="Team1_Score" Type="uint" />
+          <Property Name="Team2_Score" Type="uint" />
+          <Property Name="Status" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="t_companies">
+          <Key>
+            <PropertyRef Name="company" />
+          </Key>
+          <Property Name="company" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="rank" Type="int" Nullable="false" />
+          <Property Name="wins" Type="int" />
+          <Property Name="losses" Type="int" />
+          <Property Name="total_matches" Type="int" />
+          <Property Name="win_percent" Type="double" />
+        </EntityType>
+        <EntityType Name="t_company2matches">
+          <Key>
+            <PropertyRef Name="MatchId" />
+            <PropertyRef Name="company" />
+          </Key>
+          <Property Name="MatchId" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="company" Type="varchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <Association Name="fk_company">
+          <End Role="t_companies" Type="Self.t_companies" Multiplicity="1" />
+          <End Role="t_company2matches" Type="Self.t_company2matches" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_companies">
+              <PropertyRef Name="company" />
+            </Principal>
+            <Dependent Role="t_company2matches">
+              <PropertyRef Name="company" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_MatchId">
+          <End Role="t_clashdevset" Type="Self.t_clashdevset" Multiplicity="1" />
+          <End Role="t_company2matches" Type="Self.t_company2matches" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_clashdevset">
+              <PropertyRef Name="MatchId" />
+            </Principal>
+            <Dependent Role="t_company2matches">
+              <PropertyRef Name="MatchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="clashdbModelStoreContainer">
           <EntitySet Name="t_clashdevset" EntityType="Self.t_clashdevset" Schema="clashdb" store:Type="Tables" />
+          <EntitySet Name="t_companies" EntityType="Self.t_companies" Schema="clashdb" store:Type="Tables" />
+          <EntitySet Name="t_company2matches" EntityType="Self.t_company2matches" Schema="clashdb" store:Type="Tables" />
+          <AssociationSet Name="fk_company" Association="Self.fk_company">
+            <End Role="t_companies" EntitySet="t_companies" />
+            <End Role="t_company2matches" EntitySet="t_company2matches" />
+          </AssociationSet>
+          <AssociationSet Name="fk_MatchId" Association="Self.fk_MatchId">
+            <End Role="t_clashdevset" EntitySet="t_clashdevset" />
+            <End Role="t_company2matches" EntitySet="t_company2matches" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="clashdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="clashdbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="t_clashdevset" EntityType="clashdbModel.t_clashdevset" />
+          <EntitySet Name="t_companies" EntityType="clashdbModel.t_companies" />
+          <AssociationSet Name="t_company2matches" Association="clashdbModel.t_company2matches">
+            <End Role="t_companies" EntitySet="t_companies" />
+            <End Role="t_clashdevset" EntitySet="t_clashdevset" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="t_clashdevset">
           <Key>
             <PropertyRef Name="MatchId" />
           </Key>
-          <Property Name="MatchId" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MatchId" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
           <Property Name="GameMode" Type="Int32" />
           <Property Name="HopperId" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
           <Property Name="MapId" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
@@ -59,14 +125,33 @@
           <Property Name="MatchDuration" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
           <Property Name="IsTeamGame" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="SeasonID" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
-          <Property Name="Team1_Company_1" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
-          <Property Name="Team1_Company_2" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="Team1_Company1" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="Team1_Company2" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
           <Property Name="Team2_Company1" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
           <Property Name="Team2_Company2" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="Team1_Rank" Type="Int32" Nullable="false" />
+          <Property Name="Team2_Rank" Type="Int32" Nullable="false" />
+          <Property Name="Team1_Score" Type="Int64" />
+          <Property Name="Team2_Score" Type="Int64" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="t_companies" Relationship="clashdbModel.t_company2matches" FromRole="t_clashdevset" ToRole="t_companies" />
         </EntityType>
-        <EntityContainer Name="clashdbEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="t_clashdevset" EntityType="Self.t_clashdevset" />
-        </EntityContainer>
+        <EntityType Name="t_companies">
+          <Key>
+            <PropertyRef Name="company" />
+          </Key>
+          <Property Name="company" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="rank" Type="Int32" Nullable="false" />
+          <Property Name="wins" Type="Int32" />
+          <Property Name="losses" Type="Int32" />
+          <Property Name="total_matches" Type="Int32" />
+          <Property Name="win_percent" Type="Double" />
+          <NavigationProperty Name="t_clashdevset" Relationship="clashdbModel.t_company2matches" FromRole="t_companies" ToRole="t_clashdevset" />
+        </EntityType>
+        <Association Name="t_company2matches">
+          <End Type="clashdbModel.t_companies" Role="t_companies" Multiplicity="*" />
+          <End Type="clashdbModel.t_clashdevset" Role="t_clashdevset" Multiplicity="*" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -76,30 +161,55 @@
           <EntitySetMapping Name="t_clashdevset">
             <EntityTypeMapping TypeName="clashdbModel.t_clashdevset">
               <MappingFragment StoreEntitySet="t_clashdevset">
-                <ScalarProperty Name="MatchId" ColumnName="MatchId" />
-                <ScalarProperty Name="GameMode" ColumnName="GameMode" />
-                <ScalarProperty Name="HopperId" ColumnName="HopperId" />
-                <ScalarProperty Name="MapId" ColumnName="MapId" />
-                <ScalarProperty Name="MapVariant_ResourceType" ColumnName="MapVariant_ResourceType" />
-                <ScalarProperty Name="MapVariant_ResourceId" ColumnName="MapVariant_ResourceId" />
-                <ScalarProperty Name="MapVariant_OwnerType" ColumnName="MapVariant_OwnerType" />
-                <ScalarProperty Name="MapVariant_Owner" ColumnName="MapVariant_Owner" />
-                <ScalarProperty Name="GameBaseVariantID" ColumnName="GameBaseVariantID" />
-                <ScalarProperty Name="GameVariant_ResourceID" ColumnName="GameVariant_ResourceID" />
-                <ScalarProperty Name="GameVariant_ResourceType" ColumnName="GameVariant_ResourceType" />
-                <ScalarProperty Name="GameVariant_OwnerType" ColumnName="GameVariant_OwnerType" />
-                <ScalarProperty Name="GameVariant_Owner" ColumnName="GameVariant_Owner" />
-                <ScalarProperty Name="MatchCompleteDate" ColumnName="MatchCompleteDate" />
-                <ScalarProperty Name="MatchDuration" ColumnName="MatchDuration" />
-                <ScalarProperty Name="IsTeamGame" ColumnName="IsTeamGame" />
-                <ScalarProperty Name="SeasonID" ColumnName="SeasonID" />
-                <ScalarProperty Name="Team1_Company_1" ColumnName="Team1_Company 1" />
-                <ScalarProperty Name="Team1_Company_2" ColumnName="Team1_Company 2" />
-                <ScalarProperty Name="Team2_Company1" ColumnName="Team2_Company1" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Team2_Score" ColumnName="Team2_Score" />
+                <ScalarProperty Name="Team1_Score" ColumnName="Team1_Score" />
+                <ScalarProperty Name="Team2_Rank" ColumnName="Team2_Rank" />
+                <ScalarProperty Name="Team1_Rank" ColumnName="Team1_Rank" />
                 <ScalarProperty Name="Team2_Company2" ColumnName="Team2_Company2" />
+                <ScalarProperty Name="Team2_Company1" ColumnName="Team2_Company1" />
+                <ScalarProperty Name="Team1_Company2" ColumnName="Team1_Company2" />
+                <ScalarProperty Name="Team1_Company1" ColumnName="Team1_Company1" />
+                <ScalarProperty Name="SeasonID" ColumnName="SeasonID" />
+                <ScalarProperty Name="IsTeamGame" ColumnName="IsTeamGame" />
+                <ScalarProperty Name="MatchDuration" ColumnName="MatchDuration" />
+                <ScalarProperty Name="MatchCompleteDate" ColumnName="MatchCompleteDate" />
+                <ScalarProperty Name="GameVariant_Owner" ColumnName="GameVariant_Owner" />
+                <ScalarProperty Name="GameVariant_OwnerType" ColumnName="GameVariant_OwnerType" />
+                <ScalarProperty Name="GameVariant_ResourceType" ColumnName="GameVariant_ResourceType" />
+                <ScalarProperty Name="GameVariant_ResourceID" ColumnName="GameVariant_ResourceID" />
+                <ScalarProperty Name="GameBaseVariantID" ColumnName="GameBaseVariantID" />
+                <ScalarProperty Name="MapVariant_Owner" ColumnName="MapVariant_Owner" />
+                <ScalarProperty Name="MapVariant_OwnerType" ColumnName="MapVariant_OwnerType" />
+                <ScalarProperty Name="MapVariant_ResourceId" ColumnName="MapVariant_ResourceId" />
+                <ScalarProperty Name="MapVariant_ResourceType" ColumnName="MapVariant_ResourceType" />
+                <ScalarProperty Name="MapId" ColumnName="MapId" />
+                <ScalarProperty Name="HopperId" ColumnName="HopperId" />
+                <ScalarProperty Name="GameMode" ColumnName="GameMode" />
+                <ScalarProperty Name="MatchId" ColumnName="MatchId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="t_companies">
+            <EntityTypeMapping TypeName="clashdbModel.t_companies">
+              <MappingFragment StoreEntitySet="t_companies">
+                <ScalarProperty Name="win_percent" ColumnName="win_percent" />
+                <ScalarProperty Name="total_matches" ColumnName="total_matches" />
+                <ScalarProperty Name="losses" ColumnName="losses" />
+                <ScalarProperty Name="wins" ColumnName="wins" />
+                <ScalarProperty Name="rank" ColumnName="rank" />
+                <ScalarProperty Name="company" ColumnName="company" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="t_company2matches" TypeName="clashdbModel.t_company2matches" StoreEntitySet="t_company2matches">
+            <EndProperty Name="t_clashdevset">
+              <ScalarProperty Name="MatchId" ColumnName="MatchId" />
+            </EndProperty>
+            <EndProperty Name="t_companies">
+              <ScalarProperty Name="company" ColumnName="company" />
+            </EndProperty>
+          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
