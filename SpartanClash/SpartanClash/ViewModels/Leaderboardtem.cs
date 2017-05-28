@@ -38,11 +38,11 @@ namespace SpartanClash.ViewModels
         {
             if(rawWinPercent == null || rawWinPercent == 0)
             {
-                return "0%";
+                return "0";
             }
             else
             {
-                return Math.Round((double)rawWinPercent, 2).ToString() + "%";
+                return (100 * Math.Round((double)rawWinPercent, 4)).ToString();
             }
         }
 
