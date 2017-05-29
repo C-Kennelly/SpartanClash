@@ -23,6 +23,7 @@ namespace SpartanClash.Controllers
             }
         }
 
+        [HandleError]
         public ActionResult CompanyResults(string company)
         {
 
@@ -34,7 +35,7 @@ namespace SpartanClash.Controllers
                         || x.Team1_Company2 == company
                         || x.Team2_Company1 == company
                         || x.Team2_Company2 == company
-                    ).ToList();
+                    ).OrderBy(x => x.MatchCompleteDate).ThenBy(x => x.MapId).ToList();
 
                 List<ClanBattle> battles = new List<ClanBattle>(companyMatches.Count);
 

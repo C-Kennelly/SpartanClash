@@ -14,7 +14,7 @@ namespace SpartanClash.Models
     
     public partial class t_mapmetadata
     {
-        public string mapId { get; set; }
+        public string MapId { get; set; }
         public string printableName { get; set; }
         public string imageURL { get; set; }
     }

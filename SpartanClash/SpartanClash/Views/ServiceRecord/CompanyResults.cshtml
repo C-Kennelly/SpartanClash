@@ -11,7 +11,7 @@
 
 <h1><u>Company Results</u></h1>
 
-<h3>@companyName has @Model.Count matches on record:</h3>
+<h3>@companyName has @Model.Count Warlords matches on record:</h3>
 
 <div id="CompanyResultTable" class="table-responsive">
     <table class="table">
@@ -20,15 +20,21 @@
                 <th>Opponents</th>
                 <th>Score</th>
                 <th>Result</th>
+                <th>Match Date</th>
+                <th>Map</th>
+                
             </tr>
         </thead>
         <tbody>
             @foreach (ClanBattle battle in Model)
             {
             <tr>
-                <td>vs. @battle.enemyHeader</td>
-                <td>@battle.score to @battle.enemeyScore </td>
+                <td>@battle.enemyHeader</td>
+                <td>@battle.score to @battle.enemyScore </td>
                 <td>@battle.result</td>
+                <td>@battle.matchDate.Month/@battle.matchDate.Day/@battle.matchDate.Year</td>
+                <td>@battle.mapName</td>
+                
             </tr>
              }
         </tbody>

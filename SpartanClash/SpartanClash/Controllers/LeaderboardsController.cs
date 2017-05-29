@@ -11,6 +11,7 @@ namespace SpartanClash.Controllers
     public class LeaderboardsController : Controller
     {
         // GET: Leaderboards
+        [HandleError]
         public ActionResult Index()
         {
             Leaderboard leaderboard = new Leaderboard();

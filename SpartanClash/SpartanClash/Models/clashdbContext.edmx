@@ -11,25 +11,25 @@
           </Key>
           <Property Name="MatchId" Type="varchar" MaxLength="64" Nullable="false" />
           <Property Name="GameMode" Type="int" />
-          <Property Name="HopperId" Type="text" />
-          <Property Name="MapId" Type="text" />
+          <Property Name="HopperId" Type="varchar" MaxLength="64" />
+          <Property Name="MapId" Type="varchar" MaxLength="64" />
           <Property Name="MapVariant_ResourceType" Type="int" />
-          <Property Name="MapVariant_ResourceId" Type="text" />
+          <Property Name="MapVariant_ResourceId" Type="varchar" MaxLength="64" />
           <Property Name="MapVariant_OwnerType" Type="int" />
-          <Property Name="MapVariant_Owner" Type="text" />
-          <Property Name="GameBaseVariantID" Type="text" />
-          <Property Name="GameVariant_ResourceID" Type="text" />
+          <Property Name="MapVariant_Owner" Type="varchar" MaxLength="64" />
+          <Property Name="GameBaseVariantID" Type="varchar" MaxLength="64" />
+          <Property Name="GameVariant_ResourceID" Type="varchar" MaxLength="64" />
           <Property Name="GameVariant_ResourceType" Type="int" />
           <Property Name="GameVariant_OwnerType" Type="int" />
-          <Property Name="GameVariant_Owner" Type="text" />
+          <Property Name="GameVariant_Owner" Type="varchar" MaxLength="64" />
           <Property Name="MatchCompleteDate" Type="datetime" Precision="0" />
-          <Property Name="MatchDuration" Type="text" />
+          <Property Name="MatchDuration" Type="varchar" MaxLength="64" />
           <Property Name="IsTeamGame" Type="binary" MaxLength="50" />
-          <Property Name="SeasonID" Type="text" />
-          <Property Name="Team1_Company1" Type="text" />
-          <Property Name="Team1_Company2" Type="text" />
-          <Property Name="Team2_Company1" Type="text" />
-          <Property Name="Team2_Company2" Type="text" />
+          <Property Name="SeasonID" Type="varchar" MaxLength="64" />
+          <Property Name="Team1_Company1" Type="varchar" MaxLength="64" />
+          <Property Name="Team1_Company2" Type="varchar" MaxLength="64" />
+          <Property Name="Team2_Company1" Type="varchar" MaxLength="64" />
+          <Property Name="Team2_Company2" Type="varchar" MaxLength="64" />
           <Property Name="Team1_Rank" Type="int" Nullable="false" />
           <Property Name="Team2_Rank" Type="int" Nullable="false" />
           <Property Name="Team1_Score" Type="uint" />
@@ -57,10 +57,10 @@
         </EntityType>
         <EntityType Name="t_mapmetadata">
           <Key>
-            <PropertyRef Name="mapId" />
+            <PropertyRef Name="MapId" />
           </Key>
-          <Property Name="mapId" Type="varchar" MaxLength="64" Nullable="false" />
-          <Property Name="printableName" Type="varchar" MaxLength="64" />
+          <Property Name="MapId" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="printableName" Type="varchar" MaxLength="64" Nullable="false" />
           <Property Name="imageURL" Type="varchar" MaxLength="256" />
         </EntityType>
         <Association Name="fk_company">
@@ -108,11 +108,11 @@
         <EntityContainer Name="clashdbEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="t_clashdevset" EntityType="clashdbModel.t_clashdevset" />
           <EntitySet Name="t_companies" EntityType="clashdbModel.t_companies" />
+          <EntitySet Name="t_mapmetadata" EntityType="clashdbModel.t_mapmetadata" />
           <AssociationSet Name="t_company2matches" Association="clashdbModel.t_company2matches">
             <End Role="t_companies" EntitySet="t_companies" />
             <End Role="t_clashdevset" EntitySet="t_clashdevset" />
           </AssociationSet>
-          <EntitySet Name="t_mapmetadata" EntityType="clashdbModel.t_mapmetadata" />
         </EntityContainer>
         <EntityType Name="t_clashdevset">
           <Key>
@@ -120,25 +120,25 @@
           </Key>
           <Property Name="MatchId" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
           <Property Name="GameMode" Type="Int32" />
-          <Property Name="HopperId" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
-          <Property Name="MapId" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="HopperId" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="MapId" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
           <Property Name="MapVariant_ResourceType" Type="Int32" />
-          <Property Name="MapVariant_ResourceId" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="MapVariant_ResourceId" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
           <Property Name="MapVariant_OwnerType" Type="Int32" />
-          <Property Name="MapVariant_Owner" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
-          <Property Name="GameBaseVariantID" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
-          <Property Name="GameVariant_ResourceID" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="MapVariant_Owner" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="GameBaseVariantID" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="GameVariant_ResourceID" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
           <Property Name="GameVariant_ResourceType" Type="Int32" />
           <Property Name="GameVariant_OwnerType" Type="Int32" />
-          <Property Name="GameVariant_Owner" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="GameVariant_Owner" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
           <Property Name="MatchCompleteDate" Type="DateTime" />
-          <Property Name="MatchDuration" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="MatchDuration" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
           <Property Name="IsTeamGame" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="SeasonID" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
-          <Property Name="Team1_Company1" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
-          <Property Name="Team1_Company2" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
-          <Property Name="Team2_Company1" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
-          <Property Name="Team2_Company2" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="SeasonID" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Team1_Company1" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Team1_Company2" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Team2_Company1" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Team2_Company2" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
           <Property Name="Team1_Rank" Type="Int32" Nullable="false" />
           <Property Name="Team2_Rank" Type="Int32" Nullable="false" />
           <Property Name="Team1_Score" Type="Int64" />
@@ -158,19 +158,19 @@
           <Property Name="win_percent" Type="Double" />
           <NavigationProperty Name="t_clashdevset" Relationship="clashdbModel.t_company2matches" FromRole="t_companies" ToRole="t_clashdevset" />
         </EntityType>
+        <EntityType Name="t_mapmetadata">
+          <Key>
+            <PropertyRef Name="MapId" />
+          </Key>
+          <Property Name="MapId" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="printableName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="imageURL" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+        </EntityType>
         <Association Name="t_company2matches">
           <End Type="clashdbModel.t_companies" Role="t_companies" Multiplicity="*" />
           <End Type="clashdbModel.t_clashdevset" Role="t_clashdevset" Multiplicity="*" />
         </Association>
-        <EntityType Name="t_mapmetadata">
-          <Key>
-            <PropertyRef Name="mapId" />
-          </Key>
-          <Property Name="mapId" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
-          <Property Name="printableName" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
-          <Property Name="imageURL" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
-        </EntityType>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -220,6 +220,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="t_mapmetadata">
+            <EntityTypeMapping TypeName="clashdbModel.t_mapmetadata">
+              <MappingFragment StoreEntitySet="t_mapmetadata">
+                <ScalarProperty Name="imageURL" ColumnName="imageURL" />
+                <ScalarProperty Name="printableName" ColumnName="printableName" />
+                <ScalarProperty Name="MapId" ColumnName="MapId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <AssociationSetMapping Name="t_company2matches" TypeName="clashdbModel.t_company2matches" StoreEntitySet="t_company2matches">
             <EndProperty Name="t_clashdevset">
               <ScalarProperty Name="MatchId" ColumnName="MatchId" />
@@ -228,15 +237,6 @@
               <ScalarProperty Name="company" ColumnName="company" />
             </EndProperty>
           </AssociationSetMapping>
-          <EntitySetMapping Name="t_mapmetadata">
-            <EntityTypeMapping TypeName="clashdbModel.t_mapmetadata">
-              <MappingFragment StoreEntitySet="t_mapmetadata">
-                <ScalarProperty Name="imageURL" ColumnName="imageURL" />
-                <ScalarProperty Name="printableName" ColumnName="printableName" />
-                <ScalarProperty Name="mapId" ColumnName="mapId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
