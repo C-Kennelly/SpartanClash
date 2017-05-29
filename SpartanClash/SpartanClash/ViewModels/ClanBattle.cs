@@ -18,7 +18,7 @@ namespace SpartanClash.ViewModels
         public string allyHeader;
         public string enemyHeader; 
 
-        public bool winner { get; set; }
+        public string result { get; set; }
         public int score { get; set; }
         public int enemeyScore { get; set; }
 
@@ -38,25 +38,6 @@ namespace SpartanClash.ViewModels
             
         }
 
-        private void SetHeader(out string header, string mainCompany, string secondaryCompany)
-        {
-            if(mainCompany == missingCompanyValue)
-            {
-                header = printableMissingCompanyValue;
-            }
-            else
-            {
-                if (secondaryCompany == missingCompanyValue)
-                {
-                    header = mainCompany;
-                }
-                else
-                {
-                    header = mainCompany + " & " + secondaryCompany;
-                }
-            }
-        }
-
         private void DetermineTeam(t_clashdevset match)
         {
             if (primaryCompany == match.Team1_Company1 || primaryCompany == match.Team1_Company2)
@@ -67,7 +48,7 @@ namespace SpartanClash.ViewModels
         {
             if(team == 1) //Company is on team 1
             {
-                if(match.Team1_Rank == 1) { winner = true; } else { winner = false; } 
+                if(match.Team1_Rank == 1) { result = "Win"; } else { result = "Loss"; } 
                 score = (int)match.Team1_Score;
                 enemeyScore = (int)match.Team2_Score;
                 enemyCompany1 = match.Team2_Company1;
@@ -85,7 +66,7 @@ namespace SpartanClash.ViewModels
             else //Company is on team 2.
             {
 
-                if (match.Team2_Rank == 1) { winner = true; } else { winner = false; }
+                if (match.Team2_Rank == 1) { result = "Win"; } else { result = "Loss"; }
                 score = (int)match.Team2_Score;
                 enemeyScore = (int)match.Team1_Score;
 
@@ -105,7 +86,25 @@ namespace SpartanClash.ViewModels
 
         }
 
-        
+        private void SetHeader(out string header, string mainCompany, string secondaryCompany)
+        {
+            if (mainCompany == missingCompanyValue)
+            {
+                header = printableMissingCompanyValue;
+            }
+            else
+            {
+                if (secondaryCompany == missingCompanyValue)
+                {
+                    header = mainCompany;
+                }
+                else
+                {
+                    header = mainCompany + " & " + secondaryCompany;
+                }
+            }
+        }
+
 
     }
 }
