@@ -171,6 +171,9 @@
     <Compile Include="Models\t_companies.cs">
       <DependentUpon>clashdbContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\t_mapmetadata.cs">
+      <DependentUpon>clashdbContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\ClanBattle.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LeaderboardsController.cs" />

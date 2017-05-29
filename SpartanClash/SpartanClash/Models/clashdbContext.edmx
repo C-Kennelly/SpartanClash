@@ -55,6 +55,14 @@
           <Property Name="MatchId" Type="varchar" MaxLength="64" Nullable="false" />
           <Property Name="company" Type="varchar" MaxLength="32" Nullable="false" />
         </EntityType>
+        <EntityType Name="t_mapmetadata">
+          <Key>
+            <PropertyRef Name="mapId" />
+          </Key>
+          <Property Name="mapId" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="printableName" Type="varchar" MaxLength="64" />
+          <Property Name="imageURL" Type="varchar" MaxLength="256" />
+        </EntityType>
         <Association Name="fk_company">
           <End Role="t_companies" Type="Self.t_companies" Multiplicity="1" />
           <End Role="t_company2matches" Type="Self.t_company2matches" Multiplicity="*" />
@@ -83,6 +91,7 @@
           <EntitySet Name="t_clashdevset" EntityType="Self.t_clashdevset" Schema="clashdb" store:Type="Tables" />
           <EntitySet Name="t_companies" EntityType="Self.t_companies" Schema="clashdb" store:Type="Tables" />
           <EntitySet Name="t_company2matches" EntityType="Self.t_company2matches" Schema="clashdb" store:Type="Tables" />
+          <EntitySet Name="t_mapmetadata" EntityType="Self.t_mapmetadata" Schema="clashdb" store:Type="Tables" />
           <AssociationSet Name="fk_company" Association="Self.fk_company">
             <End Role="t_companies" EntitySet="t_companies" />
             <End Role="t_company2matches" EntitySet="t_company2matches" />
@@ -103,6 +112,7 @@
             <End Role="t_companies" EntitySet="t_companies" />
             <End Role="t_clashdevset" EntitySet="t_clashdevset" />
           </AssociationSet>
+          <EntitySet Name="t_mapmetadata" EntityType="clashdbModel.t_mapmetadata" />
         </EntityContainer>
         <EntityType Name="t_clashdevset">
           <Key>
@@ -152,6 +162,14 @@
           <End Type="clashdbModel.t_companies" Role="t_companies" Multiplicity="*" />
           <End Type="clashdbModel.t_clashdevset" Role="t_clashdevset" Multiplicity="*" />
         </Association>
+        <EntityType Name="t_mapmetadata">
+          <Key>
+            <PropertyRef Name="mapId" />
+          </Key>
+          <Property Name="mapId" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="printableName" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="imageURL" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -210,6 +228,15 @@
               <ScalarProperty Name="company" ColumnName="company" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="t_mapmetadata">
+            <EntityTypeMapping TypeName="clashdbModel.t_mapmetadata">
+              <MappingFragment StoreEntitySet="t_mapmetadata">
+                <ScalarProperty Name="imageURL" ColumnName="imageURL" />
+                <ScalarProperty Name="printableName" ColumnName="printableName" />
+                <ScalarProperty Name="mapId" ColumnName="mapId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

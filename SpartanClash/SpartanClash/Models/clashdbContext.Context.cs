@@ -27,5 +27,6 @@ namespace SpartanClash.Models
     
         public virtual DbSet<t_clashdevset> t_clashdevset { get; set; }
         public virtual DbSet<t_companies> t_companies { get; set; }
+        public virtual DbSet<t_mapmetadata> t_mapmetadata { get; set; }
     }
 }

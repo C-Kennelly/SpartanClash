@@ -8,6 +8,7 @@
         <EntityTypeShape EntityType="clashdbModel.t_clashdevset" Width="1.5" PointX="3" PointY="1.125" />
         <EntityTypeShape EntityType="clashdbModel.t_companies" Width="1.5" PointX="0.75" PointY="3" />
         <AssociationConnector Association="clashdbModel.t_company2matches" />
+        <EntityTypeShape EntityType="clashdbModel.t_mapmetadata" Width="1.5" PointX="5.625" PointY="2.25" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
