@@ -21,6 +21,8 @@ namespace SpartanClash.ViewModels
         public string result { get; set; }
         public int score { get; set; }
         public int enemeyScore { get; set; }
+        public string mapName { get; set; }
+        public DateTime matchDate { get; set; }
 
         private int team { get; set; }
         private string allyCompany { get; set; }
@@ -35,7 +37,8 @@ namespace SpartanClash.ViewModels
             DetermineTeamSpecificComponents(match);
             SetHeader(out allyHeader, primaryCompany, allyCompany);
             SetHeader(out enemyHeader, enemyCompany1, enemyCompany2);
-            
+
+            matchDate =(DateTime)match.MatchCompleteDate;
         }
 
         private void DetermineTeam(t_clashdevset match)
