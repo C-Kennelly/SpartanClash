@@ -20,3 +20,5 @@ Now that we've limited the matches to a (hopefully) manageable subset, it's one 
 Finally, our rate-limited work is complete.  The output of all of this gets exported to the application database via SQL script, and the SpartanClash front end benefits from the snappy response time of pre-mashed data as it displays an authoritative leaderboard experience to any of the 300,000 players (~60K active) who are members of these companies.
 
 The big challenge, other than my utter lack of design sense, will be automating this periodic refresh of data in some sort of way that doesn't anger my consumer ISP.  ;)  Currently, I'm only using this system for special events such as the weekly "Warzone Warlords" playlist. (https://www.halowaypoint.com/en-us/forums/6e35355aecdf4fd0acdaee3cc4156fd4/topics/update-on-warzone-12-man-fireteams/bbe49650-65bd-47ce-a1b3-94ae202ab367/posts)
+
+Updating build to test Jenkins.
