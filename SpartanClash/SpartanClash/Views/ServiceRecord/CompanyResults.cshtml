@@ -11,7 +11,14 @@
 
 <h1><u>Company Results</u></h1>
 
-<h3>@companyName has @Model.Count Warlords matches on record:</h3>
+@if(Model.Count == 1)
+{
+    <h4>@companyName has only 1 Warlords match on record:</h4>
+}
+else
+{
+    <h4>@companyName has @Model.Count Warlords matches on record:</h4>
+}
 
 <div id="CompanyResultTable" class="table-responsive">
     <table class="table">
