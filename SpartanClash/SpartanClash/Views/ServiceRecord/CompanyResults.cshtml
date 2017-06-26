@@ -28,8 +28,14 @@
         <tbody>
             @foreach (ClanBattle battle in Model)
             {
-            <tr>
-                <td>@battle.enemyHeader</td>
+            <tr> 
+                @if(battle.enemyHeader != "[randoms]")
+                {
+                    <td class="companyName">@Html.ActionLink(battle.enemyHeader, "CompanyResults/" + battle.enemyHeader, "ServiceRecord")</td>
+                }
+                else{
+                    <td>@battle.enemyHeader</td>
+                }
                 <td>@battle.score to @battle.enemyScore </td>
                 <td>@battle.result</td>
                 <td>@battle.matchDate.Month/@battle.matchDate.Day/@battle.matchDate.Year</td>
